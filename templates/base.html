@@ -1,0 +1,56 @@
+{% load static %}
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <link href="{% static 'account/css/style.css' %}" rel="stylesheet">
+    <title>Союз МСУ КР</title>
+</head>
+<body id = 'Body'>
+<main>
+    <header>
+        <h1>Кыргыз Республикасынын</h1>
+        <p>жергиликтүү өз алдынча башкаруу союзу</p>
+    </header>
+
+    <aside>
+        <ul class="menu">
+            {%for state in states%}
+            <li class="menu_list"><a href="#">{{state.name}}</a>
+
+                    <ul class="menu_drop">
+                        {%for district in state.district.all%}
+                        <li class="menu_list"><a href="">{{district.name}}</a>
+                                <ul class="menu_drop">
+                                    {%for x in district.selfManager.all%}
+                                    <li class="menu_list"><a href='/selfManager-{{x.slug}}'>{{x.name}}</a></li>
+                                    {%endfor%}
+                                </ul>
+                        </li>
+                        {%endfor%}
+                    </ul>
+
+            </li>
+            {%endfor%}
+        </ul>
+    </aside>
+    <article>
+        <div id="content">
+            {% block content %}
+
+            {% endblock %}
+         </div>
+    </article>
+    <footer>
+
+        <p>
+             Bishkek &copy; 2020
+        </p>
+
+    </footer>
+</main>
+</body>
+</html>

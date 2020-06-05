@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+{% for x in posts %}
+        <div>
+            <a href='posts/{{x.slug}}' class="article">
+                <figure class="article-image">
+                    {% if x.image %}
+<!--                    <img src="{{ x.image.url }}" id="img">-->
+                    {% endif %}
+                </figure>
+                <div class="article-body">
+                    <h2 class="article-title">
+                        {{x.title}}
+                    </h2>
+                    <p class="article-content">
+                     {{x.mini_text}}
+                    </p>
+                    <p class="article-info">
+                        {{x.author}}, {{x.created_date}}
+                    </p>
+                </div>
+            </a>
+        </div>
+{% endfor %}
+{% include "blog/pagination.html" with page=posts %}
+{% endblock %}

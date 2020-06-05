@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+
+<head>
+	<meta charset="utf-8">
+	<title>авторизация</title>
+	<link href="{% static 'account/css/style.css' %}" rel="stylesheet">
+</head>
+<body>
+
+<!--  top bar -->
+    <div class="-top">
+        <a href= #>Главная</a>
+	</div>
+<!-- top bar -->
+ <form action="{% url 'login' %}" method="post">
+ {{ form.as_p }}
+ {% csrf_token %}
+ <input type="hidden" name="next" value="{{ dashboard }}" />
+ <p><input type="submit" value="Войти"></p>
+ </form>
+
+</body>
+</html>

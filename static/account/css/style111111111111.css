@@ -1,0 +1,144 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Verdana, sans-serif;
+}
+
+main {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-rows: 100px auto auto 100px;
+    grid-template-areas:
+        "header"
+        "aside"
+        "article"
+        "footer";
+
+}
+header{
+    grid-area: header;
+    background-color: #22313F;
+}
+aside{
+    grid-area: aside;
+    background-color: #ECECEC;
+}
+article{
+
+    grid-area: article;
+}
+footer{
+    grid-area: footer;
+    background-color: #22313F;
+
+}
+
+@media (min-width: 640px) {
+    main {
+        grid-template-columns: 1fr 3fr;
+        grid-template-rows: 100px auto 100px;
+        grid-template-areas:
+                "header header"
+                "aside article"
+                "footer footer"
+    }
+}
+article{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-auto-rows: minmax(200px, auto);
+    grid-gap: 20px;
+    padding-right: 20px;
+}
+
+h1, header p {
+    color: #fff;
+    text-align: center;
+}
+
+footer p {
+    text-align: center;
+    margin-top: 40px;
+    color: #fff;
+}
+
+/* vertical menu */
+
+.menu li {
+    list-style-type: none;
+}
+a{
+    text-decoration: none;
+}
+.menu a{
+    background-color: #DADFE1;
+    color: #111;
+    padding: 10px;
+    display: block;
+    transition: .5s all;
+}
+.menu a:hover {
+    background: #BDC3C7;
+    padding: 10px 0 10px 20px;
+}
+.menu_list {
+    position: relative;
+}
+.menu_drop {
+    position: absolute;
+    width: 100%;
+    left: 100%;
+    top: -9999rem;
+    opacity: 0;
+    border-left: 10px solid transparent;
+    transition: .5s opacity;
+}
+.menu_list:hover .menu_drop{
+    opacity: 1;
+    top: 0;
+}
+.menu_list::after{
+    content: " ";
+    position: absolute;
+    border: 5px solid;
+    border-color: transparent transparent transparent #222 ;
+    top: 1em;
+    right: .7em;
+    transition: .5s;
+}
+.menu_list:hover::after{
+    transform: scale(-1);
+}
+
+
+/* news block */
+
+.article {
+    display: flex;
+    flex-direction: column;
+    flex-basis: auto;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    color: #000;
+    background-color: #ECECEC;
+}
+.article-body {
+    padding: 10px;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+.article-content {
+    flex: 1;
+}
+.article-image img {
+    width: 100%;
+    height: auto;
+}
+.article-info{
+    padding-top: 10px;
+    color: #013243;
+}
+
+.news {
+    margin-right: 20px;
+}

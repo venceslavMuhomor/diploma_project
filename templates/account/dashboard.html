@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %} Dashboard {% endblock %}
+{% load static %}
+ <link href="{% static 'account/css/style.css' %}" rel="stylesheet">
+{% block content %}
+ <h1>Рабочий стол</h1>
+ <p>Добро пожаловать</p>
+
+<form enctype="multipart/form-data" method="post" action="{% url 'dashboard' %}">
+ {% csrf_token %}
+ {{PostForm.as_p}}
+<input type="submit" value="Добавить">
+</form>
+
+ {% endblock %}
